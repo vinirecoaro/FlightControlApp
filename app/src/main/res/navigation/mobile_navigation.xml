@@ -12,14 +12,14 @@
         tools:layout="@layout/fragment_home" />
 
     <fragment
-        android:id="@+id/navigation_dashboard"
+        android:id="@+id/navigation_flights"
         android:name="br.vino.flightcontrol.ui.dashboard.DashboardFragment"
-        android:label="@string/title_dashboard"
+        android:label="@string/flights"
         tools:layout="@layout/fragment_dashboard" />
 
     <fragment
-        android:id="@+id/navigation_notifications"
+        android:id="@+id/navigation_add"
         android:name="br.vino.flightcontrol.ui.notifications.NotificationsFragment"
-        android:label="@string/title_notifications"
+        android:label="@string/add"
         tools:layout="@layout/fragment_notifications" />
 </navigation>

@@ -5,4 +5,9 @@
     <string name="title_notifications">Notifications</string>
     <string name="add">Adicionar</string>
     <string name="flights">Voos</string>
+    <string name="all">Todos</string>
+    <string name="finished">Concluídos</string>
+    <string name="canceled">Cancelados</string>
+    <string name="to_go">A realizar</string>
+    <string name="on_trip">Em viagem</string>
 </resources>

@@ -22,11 +22,51 @@ class FlightsFragment : Fragment() {
         _binding = FragmentFlightsBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
+        binding.tbFlightListLine1.check(binding.btAll.id)
+
+        setupListeners()
+
         return root
+    }
+
+    private fun setupListeners(){
+        val toggleGroup1 = binding.tbFlightListLine1
+        val toggleGroup2 = binding.tbFlightListLine2
+
+        toggleGroup1.addOnButtonCheckedListener { group, checkedId, isChecked ->
+            if(isChecked){
+                binding.rvFlightList.visibility = View.VISIBLE
+                toggleGroup2.clearChecked()
+            } else if(areNoButtonsSelected()){
+                binding.rvFlightList.visibility = View.GONE
+            }
+
+        }
+
+        toggleGroup2.addOnButtonCheckedListener { group, checkedId, isChecked ->
+            if(isChecked){
+                binding.rvFlightList.visibility = View.VISIBLE
+                toggleGroup1.clearChecked()
+            } else if(areNoButtonsSelected()){
+                binding.rvFlightList.visibility = View.GONE
+            }
+        }
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }
+
+    private fun areNoButtonsSelected(): Boolean {
+        val toggleGroup1 = binding.tbFlightListLine1
+        val toggleGroup2 = binding.tbFlightListLine2
+
+        // Verifica se nenhum botão está selecionado em ambos os grupos
+        val noButtonSelectedInGroup1 = toggleGroup1.checkedButtonId == View.NO_ID
+        val noButtonSelectedInGroup2 = toggleGroup2.checkedButtonId == View.NO_ID
+
+        return noButtonSelectedInGroup1 && noButtonSelectedInGroup2
+    }
+
 }

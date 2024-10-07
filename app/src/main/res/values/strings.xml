@@ -10,4 +10,5 @@
     <string name="canceled">Cancelados</string>
     <string name="to_go">A realizar</string>
     <string name="on_trip">Em viagem</string>
+    <string name="empty_list">Lista vazia</string>
 </resources>

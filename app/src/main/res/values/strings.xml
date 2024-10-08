@@ -11,4 +11,8 @@
     <string name="to_go">A realizar</string>
     <string name="on_trip">Em viagem</string>
     <string name="empty_list">Lista vazia</string>
+    <string name="status">Status</string>
+    <string name="arrival">Chegada</string>
+    <string name="departure">Partida</string>
+    <string name="id">ID</string>
 </resources>

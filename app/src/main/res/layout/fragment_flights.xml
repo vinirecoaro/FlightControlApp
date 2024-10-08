@@ -68,14 +68,13 @@
         android:id="@+id/tv_empty_list"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tb_flight_list_line_2"
-        android:textSize="32sp"
-        android:text="@string/empty_list"
         android:layout_marginTop="32dp"
+        android:text="@string/empty_list"
+        android:textSize="32sp"
         android:visibility="gone"
-        />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tb_flight_list_line_2" />
 
     <ImageView
         android:id="@+id/iv_state"
@@ -84,17 +83,29 @@
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
         android:src="@drawable/empty_box"
+        android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_empty_list"
-        android:visibility="gone"/>
+        app:layout_constraintTop_toBottomOf="@id/tv_empty_list" />
+
+    <View
+        android:id="@+id/view_line_separator"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginTop="6dp"
+        app:layout_constraintBottom_toTopOf="@id/rv_flight_list"
+        android:background="@color/black"
+        />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_flight_list"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_marginTop="12dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tb_flight_list_line_2" />
+        app:layout_constraintTop_toBottomOf="@id/tb_flight_list_line_2"
+        android:layout_marginBottom="75dp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -13,13 +13,13 @@
 
     <fragment
         android:id="@+id/navigation_flights"
-        android:name="br.vino.flightcontrol.ui.dashboard.FlightsFragment"
+        android:name="br.vino.flightcontrol.ui.flights.FlightsFragment"
         android:label="@string/flights"
         tools:layout="@layout/fragment_flights" />
 
     <fragment
         android:id="@+id/navigation_add"
-        android:name="br.vino.flightcontrol.ui.notifications.AddFragment"
+        android:name="br.vino.flightcontrol.ui.add.AddFragment"
         android:label="@string/add"
         tools:layout="@layout/fragment_add" />
 </navigation>

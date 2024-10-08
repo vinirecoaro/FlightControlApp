@@ -1,4 +1,4 @@
-package br.vino.flightcontrol.ui.notifications
+package br.vino.flightcontrol.ui.add
 
 import android.os.Bundle
 import android.view.LayoutInflater

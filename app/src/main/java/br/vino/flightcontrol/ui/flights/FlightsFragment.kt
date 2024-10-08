@@ -1,18 +1,20 @@
-package br.vino.flightcontrol.ui.dashboard
+package br.vino.flightcontrol.ui.flights
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import br.vino.flightcontrol.databinding.FragmentFlightsBinding
+import org.koin.android.ext.android.inject
 
 class FlightsFragment : Fragment() {
 
     private var _binding: FragmentFlightsBinding? = null
     private val binding get() = _binding!!
-    private val viewModel by viewModels<FlightsViewModel>()
+    private val viewModel : FlightsViewModel by inject()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -49,6 +51,12 @@ class FlightsFragment : Fragment() {
                 toggleGroup1.clearChecked()
             } else if(areNoButtonsSelected()){
                 binding.rvFlightList.visibility = View.GONE
+            }
+        }
+
+        viewModel.flights.observe(viewLifecycleOwner){ flights ->
+            for (flight in flights){
+                Log.e("Flights", flight.flightId)
             }
         }
     }

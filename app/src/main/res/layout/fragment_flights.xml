@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="8dp"
-    tools:context=".ui.dashboard.FlightsFragment">
+    tools:context=".ui.flights.FlightsFragment">
 
     <com.google.android.material.button.MaterialButtonToggleGroup
         android:id="@+id/tb_flight_list_line_1"

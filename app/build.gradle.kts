@@ -52,4 +52,7 @@ dependencies {
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 
+    //Dependency Injection
+    implementation(libs.koin.android)
+
 }

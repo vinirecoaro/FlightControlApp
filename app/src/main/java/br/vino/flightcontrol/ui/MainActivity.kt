@@ -1,4 +1,4 @@
-package br.vino.flightcontrol
+package br.vino.flightcontrol.ui
 
 import android.os.Bundle
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -7,6 +7,7 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import br.vino.flightcontrol.R
 import br.vino.flightcontrol.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {

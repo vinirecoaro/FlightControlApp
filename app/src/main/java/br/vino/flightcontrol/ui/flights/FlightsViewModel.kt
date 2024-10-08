@@ -16,6 +16,10 @@ class FlightsViewModel(private val repository : FlightRepository) : ViewModel() 
     }
 
     fun getFlights(){
-        _flights.value = repository.getFlights()
+        _flights.value = repository.getFlights().sortedBy { it.flightId }
+    }
+
+    fun getFilteredFlights(status : String){
+        _flights.value = repository.getFlights().filter { it.status == status }.sortedBy { it.flightId }
     }
 }

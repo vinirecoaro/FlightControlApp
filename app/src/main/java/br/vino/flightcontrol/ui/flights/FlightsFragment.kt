@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import br.vino.flightcontrol.databinding.FragmentFlightsBinding
+import br.vino.flightcontrol.utils.ConstantStrings
 import org.koin.android.ext.android.inject
 
 class FlightsFragment : Fragment() {
@@ -46,9 +47,25 @@ class FlightsFragment : Fragment() {
         toggleGroup1.addOnButtonCheckedListener { group, checkedId, isChecked ->
             if(isChecked){
                 binding.rvFlightList.visibility = View.VISIBLE
+                binding.viewLineSeparator.visibility = View.VISIBLE
                 toggleGroup2.clearChecked()
+
+                when (checkedId) {
+                    binding.btAll.id -> {
+                        viewModel.getFlights()
+                    }
+                    binding.btFinished.id -> {
+                        viewModel.getFilteredFlights(ConstantStrings.STATUS.FINISHED)
+                    }
+                    binding.btCanceled.id -> {
+                        viewModel.getFilteredFlights(ConstantStrings.STATUS.CANCELED)
+                    }
+                }
             } else if(areNoButtonsSelected()){
                 binding.rvFlightList.visibility = View.GONE
+                binding.viewLineSeparator.visibility = View.GONE
+                binding.tvEmptyList.visibility = View.GONE
+                binding.ivState.visibility = View.GONE
             }
 
         }
@@ -56,9 +73,22 @@ class FlightsFragment : Fragment() {
         toggleGroup2.addOnButtonCheckedListener { group, checkedId, isChecked ->
             if(isChecked){
                 binding.rvFlightList.visibility = View.VISIBLE
+                binding.viewLineSeparator.visibility = View.VISIBLE
                 toggleGroup1.clearChecked()
+
+                when (checkedId) {
+                    binding.btToGo.id -> {
+                        viewModel.getFilteredFlights(ConstantStrings.STATUS.TO_GO)
+                    }
+                    binding.btOnTrip.id -> {
+                        viewModel.getFilteredFlights(ConstantStrings.STATUS.ON_TRIP)
+                    }
+                }
             } else if(areNoButtonsSelected()){
                 binding.rvFlightList.visibility = View.GONE
+                binding.viewLineSeparator.visibility = View.GONE
+                binding.tvEmptyList.visibility = View.GONE
+                binding.ivState.visibility = View.GONE
             }
         }
 

@@ -16,4 +16,12 @@
     <string name="departure">Partida</string>
     <string name="id">ID</string>
     <string name="flights_overview">Visão geral dos Voos</string>
+    <string name="flight_id">ID do Voo</string>
+    <string name="departure_airport">Aeroporto de partida</string>
+    <string name="arrival_airport">Aeroporto de destino</string>
+    <string name="departure_date">Data de saida</string>
+    <string name="departure_hour">Hora da saida</string>
+    <string name="arrival_date">Data de chegada</string>
+    <string name="arrival_hour">Hora de chegada</string>
+    <string name="save">Salvar</string>
 </resources>

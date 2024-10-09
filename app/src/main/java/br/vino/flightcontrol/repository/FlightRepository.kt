@@ -3,7 +3,7 @@ package br.vino.flightcontrol.repository
 import br.vino.flightcontrol.model.Flight
 
 class FlightRepository {
-    fun getFlights():List<Flight>{
+    suspend fun getFlights():List<Flight>{
         return listOf(
             Flight(
                 flightId = "AB123",

@@ -55,4 +55,8 @@ dependencies {
     //Dependency Injection
     implementation(libs.koin.android)
 
+    //Chart
+    implementation(libs.mpandroidchart)
+
+
 }

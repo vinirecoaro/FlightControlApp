@@ -7,7 +7,11 @@ Através desse aplicativo é possível vizualizar cada voo de uma companhia aere
 
 ## Sobre o projeto
 
-Desenvolvido no Android Studio utilizando a linguagem de programação Kotlin
+Desenvolvido no Android Studio utilizando a linguagem de programação Kotlin.
+
+## Testes automatizados
+
+Foram feitos teste automatizatos utilizando mockito e junit. Os testes foram criados para validar as funções existentes nas ViewModels.
 
 ## Bibliotecas utilizadas
 
@@ -27,6 +31,13 @@ Desenvolvido no Android Studio utilizando a linguagem de programação Kotlin
     implementation(libs.koin.android)
     //Chart
     implementation(libs.mpandroidchart)
+
+    //Test
+    testImplementation(libs.mockito.core)
+    testImplementation(libs.mockito.kotlin)
+    testImplementation(libs.kotlinx.coroutines.test)
+    testImplementation(libs.kotlinx.coroutines.test.v171)
+    testImplementation(libs.androidx.core.testing)
 
 ## Tela home
 

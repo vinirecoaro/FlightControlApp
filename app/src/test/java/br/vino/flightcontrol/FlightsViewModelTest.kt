@@ -90,4 +90,57 @@ class FlightsViewModelTest {
         // Clean up
         flightsViewModel.flights.removeObserver(observer)
     }
+
+    @OptIn(ExperimentalCoroutinesApi::class)
+    @Test
+    fun `getFilteredFlights should fetch flights filtered and update LiveData`() = runTest {
+        // Arrange
+        val mockRepository = mock(FlightRepository::class.java)
+        val flightsViewModel = FlightsViewModel(mockRepository)
+        val fakeFlights = listOf(
+            Flight(
+                flightId = "1",
+                status = "CONCLUIDO",
+                completionStatus = "ATRASOU",
+                startDate = "2024-08-01",
+                endDate = "2024-08-01",
+                departureTime = "10:00",
+                arrivalTime = "14:00",
+                departureAirport = "JFK - John F. Kennedy International Airport",
+                arrivalAirport = "LAX - Los Angeles International Airport",
+                airplaneName = "Boeing 737"
+            ),
+            Flight(
+                flightId = "2",
+                status = "CANCELADO",
+                completionStatus = "NO_HORARIO",
+                startDate = "2024-08-03",
+                endDate = "2024-08-03",
+                departureTime = "15:30",
+                arrivalTime = "19:45",
+                departureAirport = "ORD - O'Hare International Airport",
+                arrivalAirport = "MIA - Miami International Airport",
+                airplaneName = "Airbus A320"
+            )
+        )
+
+        `when`(mockRepository.getFlights()).thenReturn(fakeFlights)
+
+        // Act
+        val observer = mock(Observer::class.java) as Observer<List<Flight>>
+        val captor = argumentCaptor<List<Flight>>()
+
+        flightsViewModel.flights.observeForever(observer)
+        flightsViewModel.getFilteredFlights("CONCLUIDO")
+
+        // Advance coroutines
+        advanceUntilIdle()
+
+        // Assert
+        verify(observer, times(2)).onChanged(captor.capture())
+        assert(captor.lastValue == fakeFlights.filter { it.status == "CONCLUIDO" }.sortedBy { it.flightId })
+
+        // Clean up
+        flightsViewModel.flights.removeObserver(observer)
+    }
 }

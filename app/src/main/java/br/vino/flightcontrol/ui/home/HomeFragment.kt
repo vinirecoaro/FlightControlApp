@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 import br.vino.flightcontrol.R
 import org.koin.android.ext.android.inject
 import br.vino.flightcontrol.databinding.FragmentHomeBinding
+import br.vino.flightcontrol.utils.PaletteColors
 import com.github.mikephil.charting.animation.Easing
 import com.github.mikephil.charting.data.PieData
 import com.github.mikephil.charting.data.PieDataSet
@@ -41,7 +42,7 @@ class HomeFragment : Fragment() {
         viewModel.flightsPerStatusList.observe(viewLifecycleOwner){ flightsList ->
             initExpensePerCategoryChart(flightsList)
             val nOfCategories = flightsList.size
-            val colors = viewModel.getPieChartCategoriesColors()
+            val colors = PaletteColors().pieChartPaletteColors
             when (nOfCategories) {
                 1 -> {
                     //Visibility
@@ -195,7 +196,7 @@ class HomeFragment : Fragment() {
 
         // Create a entries list for Pie Chart and set a color for each entry
         val entries = mutableListOf<PieEntry>()
-        val paletteColors = viewModel.getPieChartCategoriesColors()
+        val paletteColors = PaletteColors().pieChartPaletteColors
         val colors = mutableListOf<Int>()
         flightsList.forEachIndexed { index, category ->
             entries.add(PieEntry(category.second.toFloat(), category.first))

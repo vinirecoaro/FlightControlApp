@@ -58,5 +58,11 @@ dependencies {
     //Chart
     implementation(libs.mpandroidchart)
 
+    //Test
+    testImplementation(libs.mockito.core)
+    testImplementation(libs.mockito.kotlin)
+    testImplementation(libs.kotlinx.coroutines.test)
+    testImplementation(libs.kotlinx.coroutines.test.v171)
+    testImplementation(libs.androidx.core.testing)
 
 }

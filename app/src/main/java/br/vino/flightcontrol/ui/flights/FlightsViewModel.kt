@@ -1,5 +1,6 @@
 package br.vino.flightcontrol.ui.flights
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -19,13 +20,21 @@ class FlightsViewModel(private val repository : FlightRepository) : ViewModel() 
 
     fun getFlights(){
         viewModelScope.async {
-            _flights.value = repository.getFlights().sortedBy { it.flightId }
+            try{
+                _flights.value = repository.getFlights().sortedBy { it.flightId }
+            }catch (e : Exception){
+                Log.e("Error on fetch flights: ", e.message.toString())
+            }
         }
     }
 
     fun getFilteredFlights(status : String){
         viewModelScope.async {
-            _flights.value = repository.getFlights().filter { it.status == status }.sortedBy { it.flightId }
+            try{
+                _flights.value = repository.getFlights().filter { it.status == status }.sortedBy { it.flightId }
+            }catch (e : Exception){
+                Log.e("Error on fetch filtered flights: ", e.message.toString())
+            }
         }
     }
 }
